@@ -12,6 +12,10 @@
     --light-color: rgb(226, 232, 230);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Container */
 .container {
     width: 80%;
@@ -62,8 +66,55 @@ nav #logo {
 /* Mobile Menu */
 .menu-icon {
     display: none;
-    font-size: 28px;
+    font-size: 30px;
     cursor: pointer;
+    color: #555;
+    position: relative;
+}
+
+.menu-icon:hover .menu {
+    display: block;
+}
+
+.menu {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    top: 53px;
+    right: -11px;
+    min-width: 200px;
+    z-index: 1;
+    border-radius: 10px;
+    font-size: 16px;
+    display: none;
+}
+
+.menu::before{
+    content: "";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgba(255, 255, 255, 0.9) transparent;
+    right: 17px;
+    top: -20px;
+}
+
+.menu li a{
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #555;
+    transition: 0.5s;
+}
+.menu li:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.menu li a:hover {
+    padding-left: 25px;
 }
 
 /* Hero Section */
@@ -93,6 +144,7 @@ nav #logo {
 .hero-content {
     position: relative;
     z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 .hero h1 {
@@ -104,6 +156,7 @@ nav #logo {
 .hero p {
     font-size: 18px;
     margin-bottom: 25px;
+    padding: 0 15px ;
 }
 
 /* Button */
@@ -116,21 +169,28 @@ nav #logo {
     border-radius: 25px;
     text-decoration: none;
     transition: 0.3s;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+@media(max-width:480px){
+    .btn {
+        font-size: 22px;
+    }
 }
 
 .btn:hover {
     background:rgb(45 158 214 / 80%);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .nav-links {
         display: none;
     }
     .menu-icon {
         display: block;
     }
-    .hero h2 {
-        font-size: 35px;
+    .hero h1 {
+        font-size: 40px;
     }
     .hero p {
         font-size: 16px;
@@ -218,19 +278,40 @@ nav #logo {
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 320px;
+    width: 350px;  /*الحجم الافتراضي */
+    max-width: 100%;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1600px) {
     .course-card {
-        width: 700px;
+        width: 30%;
+    }
+}
+@media (max-width: 1240px) {
+    .courses {
+        justify-content: center;
+    }
+    .course-card {
+        width: 45%; /* عرض كرتين في كل صف */
+    }
+}
+@media (max-width: 680px) {
+    .courses {
+        flex-direction: column;
+        align-items: center;
+    }
+    .course-card {
+        width: 90%; /* كرت واحد في كل صف */
     }
 }
 
-.course-card .text{
-    padding: 20px;
+@media (max-width: 480px) {
+    .course-card {
+        width: 100%; 
+        margin: 0 auto;
+    }
 }
 
 .course-card:hover {
@@ -247,6 +328,10 @@ nav #logo {
 
 .course-card:hover img {
     filter: brightness(100%) contrast(110%) saturate(120%); 
+}
+
+.course-card .text{
+    padding: 20px;
 }
 
 .course-card h3 {
@@ -296,9 +381,13 @@ nav #logo {
 .our-teachers p {
     color: #555;
     font-size: 18px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
-
+@media (max-width: 940px) {
+    .our-teachers p {
+        margin-bottom: 30px;
+    }
+}
 .teachers {
     display: flex;
     justify-content: center;
@@ -312,6 +401,7 @@ nav #logo {
     text-align: center;
     padding: 30px 20px;
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
 }
 
 .teacher-card:hover {
@@ -585,17 +675,14 @@ nav #logo {
 
 /* Start Footer */
 .footer {
-    background: linear-gradient(to right, #023e8a, #0077b6); /* تدرج بين درجات الأزرق */
+    /* background: linear-gradient(to right, #023e8a, #0077b6); تدرج بين درجات الأزرق */
+    /* background-color: #023e8a; */
+    background: linear-gradient(to right, #023e8a, #0077b6);
     color: #fff;
     padding: 50px 0 20px;
     font-size: 16px;
 }
 
-/* .footer .container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-} */
 
 .footer-content {
     display: flex;
@@ -613,7 +700,7 @@ nav #logo {
 .footer-section h3 {
     font-size: 22px;
     margin-bottom: 15px;
-    color: #90e0ef; /* أزرق فاتح */
+    color: #ffffff; 
 }
 
 .footer-section p {
@@ -668,7 +755,6 @@ nav #logo {
     color: #bbb;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
