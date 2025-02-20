@@ -117,6 +117,18 @@ nav #logo {
     padding-left: 25px;
 }
 
+@media(max-width: 768px){
+    nav {
+        padding: 7px 0;
+    }
+    nav #logo {
+        max-width: 150px;
+    }
+    .menu-icon {
+        font-size: 24px;
+    }
+}
+
 /* Hero Section */
 .hero {
     background-image: url('../IMG/02.jpg');
@@ -289,7 +301,7 @@ nav #logo {
         width: 30%;
     }
 }
-@media (max-width: 1240px) {
+@media (max-width: 1100px) {
     .courses {
         justify-content: center;
     }
